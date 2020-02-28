@@ -1,3 +1,6 @@
+# We are hiding actually exported data by the API
+*.xlsx
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
