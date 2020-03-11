@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/sme33/py.sme.3-3.info
+    - /bin/rm -rf $DEPLOYPATH/*
+    - /bin/cp * $DEPLOYPATH
