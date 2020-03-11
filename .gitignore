@@ -1,3 +1,6 @@
+# JSON files are generated on the prod
+*.json
+
 # Custom bash parameters
 CALL_PARAMETERS
 
