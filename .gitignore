@@ -6,6 +6,7 @@ CALL_PARAMETERS
 
 # We are hiding actually exported data by the API
 *.xlsx
+.~lock.out.xlsx#
 
 # We are hiding notes
 *.txt
