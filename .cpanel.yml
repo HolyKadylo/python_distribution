@@ -4,3 +4,5 @@ deployment:
     - export DEPLOYPATH=/home/sme33/py.sme.3-3.info
     - /bin/rm -rf $DEPLOYPATH/*
     - /bin/cp * $DEPLOYPATH
+    - /bin/rm $DEPLOYPATH/CALL_PARAMETERS .example
+    - /bin/cp /home/sme33/repositories/secure/CALL_PARAMETERS $DEPLOYPATH/CALL_PARAMETERS
