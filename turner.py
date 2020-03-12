@@ -37,9 +37,6 @@ STRINGS.close()
 dnXls = load_workbook('dn.xlsx').active
 khXls = load_workbook('kh.xlsx').active
 
-print (dnXls.title)
-print (khXls.title)
-
 # removing them from the memory
 del dnXls
 del khXls
