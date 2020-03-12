@@ -1,8 +1,9 @@
 # JSON files are generated on the prod
 *.json
 
-# Custom bash parameters
+# Custom bash & python parameters
 CALL_PARAMETERS
+STRINGS
 
 # We are hiding actually exported data by the API
 *.xlsx
