@@ -1,5 +1,8 @@
 import os
 
+# https://openpyxl.readthedocs.io/en/stable/
+from openpyxl import load_workbook
+
 # What is the current shift
 # https://stackoverflow.com/a/103081
 # https://janakiev.com/blog/python-shell-commands/
@@ -30,4 +33,13 @@ D_MORNING = STRINGS.readline()
 D_EVENING = STRINGS.readline()
 STRINGS.close()
 
+# loading worksheets from workbooks
+dnXls = load_workbook('dn.xlsx').active
+khXls = load_workbook('kh.xlsx').active
 
+print (dnXls.title)
+print (khXls.title)
+
+# removing them from the memory
+del dnXls
+del khXls
