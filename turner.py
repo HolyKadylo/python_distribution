@@ -49,12 +49,14 @@ D_EVENING = D_EVENING[0:len(D_EVENING) - 1]
 dnXls = load_workbook('dn.xlsx').active
 khXls = load_workbook('kh.xlsx').active
 
-# Expert names to be inserted into JSON
+# Expert and specialists names to be inserted into JSON
 # We are filling this array only with those who will be on the shift
 experts = []
+specialists = [] # main dpt
+specialists2 = [] # sub dpt
 
 # TODO switch 300 to purposly defined value
-colB = dnXls['B']
+#colB = dnXls['B']
 
 # returns correct string of the time depending on the shift type
 def timePickerD(currentShift):
@@ -70,7 +72,57 @@ def timePickerK(currentShift):
 		'night': K_NIGHT
 	}.get(currentShift, "night")
 
+# https://stackoverflow.com/questions/706721/how-do-i-pass-a-method-as-a-parameter-in-python
+def constructK (TAG):
+	arr = []
+	colB = khXls['B']
+	for cell in colB:
+		if cell.value == TAG:
+
+			# converting cell object into cell row number (still string)
+			# <Cell u'Schedule'.
+			# https://developers.google.com/edu/python/strings
+			cell = str(cell)[19:len(str(cell)) - 1]
+			try:
+				if timePickerK(currentShift) in khXls['D' + cell].value:
+
+					# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
+					arr.append(khXls['A' + cell].value.encode('ascii', 'ignore'))
+			except TypeError:
+				pass
+	print (arr)
+	return arr
+
+
+def constructD (TAG):
+	arr = []
+	colB = dnXls['B']
+	for cell in colB:
+		if cell.value == TAG:
+
+			# converting cell object into cell row number (still string)
+			# <Cell u'Schedule'.
+			# https://developers.google.com/edu/python/strings
+			cell = str(cell)[19:len(str(cell)) - 1]
+			try:
+				if timePickerD(currentShift) in dnXls['D' + cell].value:
+
+					# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
+					arr.append(dnXls['A' + cell].value.encode('ascii', 'ignore'))
+			except TypeError:
+				pass
+	print (arr)
+	return arr
+
+experts = constructD (EXPERT_TAG)
+specialists = constructD (DPT1_TAG)
+specialists2 = constructD (DPT2_TAG)
+experts = experts.append(constructK (EXPERT_TAG))
+specialists = specialists.append(constructK (DPT1_TAG))
+specialists2 = specialists2.append(constructK (DPT2_TAG))
+	
 # Constructing D experts
+'''
 for cell in colB:
 	if cell.value == EXPERT_TAG:
 
@@ -83,7 +135,8 @@ for cell in colB:
 			# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
 			experts.append(dnXls['A' + cell].value.encode('ascii', 'ignore'))
 
-colB = khXls['B']
+#colB = khXls['B']
+
 # Constructing K experts
 for cell in colB:
 	if cell.value == EXPERT_TAG:
@@ -96,9 +149,15 @@ for cell in colB:
 
 			# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
 			experts.append(khXls['A' + cell].value.encode('ascii', 'ignore'))
+'''
 
-# prints experts on the current shift
+# prints people on the current shift
+print ("=experts=")
 print (experts)
+print ("=specialists=")
+print (specialists)
+print ("=sub-spec=")
+print (specialists2)
 
 # removing them from the memory
 del dnXls
