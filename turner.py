@@ -52,7 +52,6 @@ khXls = load_workbook('kh.xlsx').active
 # Expert names to be inserted into JSON
 # We are filling this array only with those who will be on the shift
 experts = []
-experts.append("who who")
 
 # TODO switch 300 to purposly defined value
 colB = dnXls['B']
@@ -80,7 +79,9 @@ for cell in colB:
 		# https://developers.google.com/edu/python/strings
 		cell = str(cell)[19:len(str(cell)) - 1]
 		if timePickerD(currentShift) in (dnXls['D' + cell].value):
-			experts.append(dnXls['A' + cell].value)
+
+			# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
+			experts.append(dnXls['A' + cell].value.encode('ascii', 'ignore'))
 
 colB = khXls['B']
 # Constructing K experts
@@ -92,10 +93,12 @@ for cell in colB:
 		# https://developers.google.com/edu/python/strings
 		cell = str(cell)[19:len(str(cell)) - 1]
 		if timePickerK(currentShift) in (khXls['D' + cell].value):
-			experts.append(khXls['A' + cell].value)
+
+			# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
+			experts.append(khXls['A' + cell].value.encode('ascii', 'ignore'))
 
 # prints experts on the current shift
-print (experts) #TODO TODO TODO TODO TODO TODO TODO TODO
+print (experts)
 
 # removing them from the memory
 del dnXls
