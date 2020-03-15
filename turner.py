@@ -13,9 +13,31 @@ currentHour = stream.read()
 # TODO fix default
 def shiftPicker(currentHour):
 	return {
-		'07': "morning",
-		'15': "evening",
-		'23': "night"
+	    # sorry
+	    '00': "night",
+	    '01': "night",
+	    '02': "night",
+	    '03': "night",
+	    '04': "night",
+	    '05': "night",
+	    '06': "morning",
+	    '07': "morning",
+	    '08': "morning",
+	    '09': "morning",
+	    '10': "morning",
+	    '11': "morning",
+	    '12': "morning",
+	    '13': "morning",
+	    '14': "evening",
+	    '15': "evening",
+	    '16': "evening",
+	    '17': "evening",
+	    '18': "evening",
+	    '19': "evening",
+	    '20': "evening",
+	    '21': "evening",
+	    '22': "night",
+	    '23': "night"
 	}.get(currentHour, "night")
 currentShift = shiftPicker (currentHour)
 #print(currentShift)
