@@ -140,9 +140,9 @@ def constructD (TAG):
 experts = constructD (EXPERT_TAG)
 specialists = constructD (DPT1_TAG)
 specialists2 = constructD (DPT2_TAG)
-experts = experts.append(constructK (EXPERT_TAG))
-specialists = specialists.append(constructK (DPT1_TAG))
-specialists2 = specialists2.append(constructK (DPT2_TAG))
+experts.extend(constructK (EXPERT_TAG))
+specialists.extend(constructK (DPT1_TAG))
+specialists2.extend(constructK (DPT2_TAG))
 	
 # Constructing D experts
 '''
