@@ -113,7 +113,6 @@ def constructK (TAG):
 					arr.append(khXls['A' + cell].value.encode('ascii', 'ignore'))
 			except TypeError:
 				pass
-	print (arr)
 	return arr
 
 
@@ -134,7 +133,6 @@ def constructD (TAG):
 					arr.append(dnXls['A' + cell].value.encode('ascii', 'ignore'))
 			except TypeError:
 				pass
-	print (arr)
 	return arr
 
 experts = constructD (EXPERT_TAG)
@@ -143,36 +141,6 @@ specialists2 = constructD (DPT2_TAG)
 experts.extend(constructK (EXPERT_TAG))
 specialists.extend(constructK (DPT1_TAG))
 specialists2.extend(constructK (DPT2_TAG))
-	
-# Constructing D experts
-'''
-for cell in colB:
-	if cell.value == EXPERT_TAG:
-
-		# converting cell object into cell row number (still string)
-		# <Cell u'Schedule'.
-		# https://developers.google.com/edu/python/strings
-		cell = str(cell)[19:len(str(cell)) - 1]
-		if timePickerD(currentShift) in (dnXls['D' + cell].value):
-
-			# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
-			experts.append(dnXls['A' + cell].value.encode('ascii', 'ignore'))
-
-#colB = khXls['B']
-
-# Constructing K experts
-for cell in colB:
-	if cell.value == EXPERT_TAG:
-
-		# converting cell object into cell row number (still string)
-		# <Cell u'Schedule'.
-		# https://developers.google.com/edu/python/strings
-		cell = str(cell)[19:len(str(cell)) - 1]
-		if timePickerK(currentShift) in (khXls['D' + cell].value):
-
-			# https://stackoverflow.com/questions/2464959/whats-the-u-prefix-in-a-python-string
-			experts.append(khXls['A' + cell].value.encode('ascii', 'ignore'))
-'''
 
 # prints people on the current shift
 print ("=experts=")
