@@ -1,4 +1,5 @@
 import os
+import json
 
 # https://openpyxl.readthedocs.io/en/stable/
 from openpyxl import *
@@ -141,6 +142,34 @@ specialists2 = constructD (DPT2_TAG)
 experts.extend(constructK (EXPERT_TAG))
 specialists.extend(constructK (DPT1_TAG))
 specialists2.extend(constructK (DPT2_TAG))
+
+class Distro:
+	ShiftType = 'Morning'
+	ShiftLeader = 'Unknown'
+	SMEs = []
+	CSs = []
+class SME:
+	name = "None"
+class CS:
+	name = "None"
+
+for i in experts:
+	sme = SME()
+	sme.name = experts[i]
+	distro.SMEs.append(sme)
+	
+for i in specialists:
+	cs = CS()
+	cs.name = specialists[i]
+	distro.CSs.append(cs)
+	
+distro = Distro()
+distro.ShiftType = currentShift
+#distro.SMEs = experts
+jsonStr = json.dumps(distro.__dict__)
+print("++++++++++++")
+print(jsonStr)
+print("++++++++++++")
 
 # prints people on the current shift
 print ("=experts=")
