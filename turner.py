@@ -153,23 +153,30 @@ class SME:
 class CS:
 	name = "None"
 
-for i in experts:
+distro = Distro()
+
+for exp in experts:
 	sme = SME()
-	sme.name = experts[i]
+	sme.name = exp
 	distro.SMEs.append(sme)
 	
-for i in specialists:
+for sp in specialists:
 	cs = CS()
-	cs.name = specialists[i]
+	cs.name = sp
 	distro.CSs.append(cs)
 	
-distro = Distro()
+print (distro.CSs)
 distro.ShiftType = currentShift
 #distro.SMEs = experts
 jsonStr = json.dumps(distro.__dict__)
 print("++++++++++++")
 print(jsonStr)
 print("++++++++++++")
+
+# writing to the file
+with open('test.json', 'w') as json_file:
+	json.dump(jsonStr, json_file)
+	json_file.close()
 
 # prints people on the current shift
 print ("=experts=")
