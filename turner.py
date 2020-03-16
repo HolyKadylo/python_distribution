@@ -159,8 +159,14 @@ class ShiftType:
 shiftType = ShiftType()
 shiftType.shiftType = currentShift
 shiftType = json.dumps(shiftType.__dict__) #converting to JSON; TODO check if needed
+class ShiftLeader:
+	shiftLeader = "None"
+shiftLeader = ShiftLeader()
+shiftLeader.shiftLeader = "Unknown"
+shiftLeader = json.dumps(shiftLeader.__dict__) #converting to JSON; TODO check if needed
 
 distro.append(shiftType)
+distro.append(shiftLeader)
 distro.append(CSs) #TODO add descr CSs:
 distro.append(SMEs) #TODO add descr SME:
 
