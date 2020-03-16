@@ -143,31 +143,30 @@ experts.extend(constructK (EXPERT_TAG))
 specialists.extend(constructK (DPT1_TAG))
 specialists2.extend(constructK (DPT2_TAG))
 
+# Now we are filling in the resulting objects
+distro = [] # final obj to be converted
 SMEs = []
 CSs = []
+
 for exp in experts:
-	#sme = SME()
-	#sme.name = exp
 	SMEs.append({"name":exp})
 	
 for sp in specialists:
-	#cs = CS()
-	#cs.name = sp
 	CSs.append({"name":sp})
 
-distro = []
 class ShiftType:
 	shiftType = "None"
 shiftType = ShiftType()
 shiftType.shiftType = currentShift
-shiftType = json.dumps(shiftType.__dict__)
+shiftType = json.dumps(shiftType.__dict__) #converting to JSON; TODO check if needed
+
 distro.append(shiftType)
-distro.append(CSs)
-distro.append(SMEs)
-#distro.ShiftType = currentShift
-print(distro)
-#distro.SMEs = experts
+distro.append(CSs) #TODO add descr CSs:
+distro.append(SMEs) #TODO add descr SME:
+
 jsonStr = json.dumps(distro)
+
+# for test
 print("++++++++++++")
 print(jsonStr)
 print("++++++++++++")
@@ -177,7 +176,7 @@ with open('test.json', 'w') as json_file:
 	json.dump(distro, json_file, indent=4, sort_keys=True)
 	json_file.close()
 
-# prints people on the current shift
+# for test
 print ("=experts=")
 print (experts)
 print ("=specialists=")
