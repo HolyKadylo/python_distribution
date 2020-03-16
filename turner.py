@@ -153,29 +153,33 @@ class SME:
 class CS:
 	name = "None"
 
-distro = Distro()
-
+SMEs = []
+CSs = []
 for exp in experts:
-	sme = SME()
-	sme.name = exp
-	distro.SMEs.append(sme)
+	#sme = SME()
+	#sme.name = exp
+	SMEs.append({"name":exp})
 	
 for sp in specialists:
-	cs = CS()
-	cs.name = sp
-	distro.CSs.append(cs)
-	
-print (distro.CSs)
-distro.ShiftType = currentShift
+	#cs = CS()
+	#cs.name = sp
+	CSs.append({"name":sp})
+
+distro = []
+distro.append({"ShiftType":"Morning"})
+distro.append(CSs)
+distro.append(SMEs)
+#distro.ShiftType = currentShift
+print(distro)
 #distro.SMEs = experts
-jsonStr = json.dumps(distro.__dict__)
+jsonStr = json.dumps(distro)
 print("++++++++++++")
 print(jsonStr)
 print("++++++++++++")
 
 # writing to the file
 with open('test.json', 'w') as json_file:
-	json.dump(jsonStr, json_file)
+	json.dump(distro, json_file, indent=4, sort_keys=True)
 	json_file.close()
 
 # prints people on the current shift
