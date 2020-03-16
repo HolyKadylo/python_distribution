@@ -143,16 +143,6 @@ experts.extend(constructK (EXPERT_TAG))
 specialists.extend(constructK (DPT1_TAG))
 specialists2.extend(constructK (DPT2_TAG))
 
-class Distro:
-	ShiftType = 'Morning'
-	ShiftLeader = 'Unknown'
-	SMEs = []
-	CSs = []
-class SME:
-	name = "None"
-class CS:
-	name = "None"
-
 SMEs = []
 CSs = []
 for exp in experts:
@@ -166,7 +156,12 @@ for sp in specialists:
 	CSs.append({"name":sp})
 
 distro = []
-distro.append({"ShiftType":"Morning"})
+class ShiftType:
+	shiftType = "None"
+shiftType = ShiftType()
+shiftType.shiftType = currentShift
+shiftType = json.dumps(shiftType.__dict__)
+distro.append(shiftType)
 distro.append(CSs)
 distro.append(SMEs)
 #distro.ShiftType = currentShift
