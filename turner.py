@@ -15,7 +15,7 @@ currentHour = stream.read()
 def shiftPicker(currentHour):
         currentHour = int(currentHour)
         shiftPicker={
-                0: "night",
+		0: "night",
 		1: "night",
 		2: "night",
 		3: "night",
@@ -39,7 +39,7 @@ def shiftPicker(currentHour):
 		21: "evening",
 		22: "night",
 		23: "night"
-            }
+		}
         return shiftPicker.get(currentHour,"Invalid time")
 currentShift = shiftPicker (currentHour)
 #print(currentShift)
@@ -158,15 +158,13 @@ class ShiftType:
 	shiftType = "None"
 shiftType = ShiftType()
 shiftType.shiftType = currentShift
-shiftType = json.dumps(shiftType.__dict__) #converting to JSON; TODO check if needed
 class ShiftLeader:
 	shiftLeader = "None"
 shiftLeader = ShiftLeader()
 shiftLeader.shiftLeader = "Unknown"
-shiftLeader = json.dumps(shiftLeader.__dict__) #converting to JSON; TODO check if needed
 
-distro.append(shiftType)
-distro.append(shiftLeader)
+distro.append(shiftType.__dict__)
+distro.append(shiftLeader.__dict__)
 distro.append(CSs) #TODO add descr CSs:
 distro.append(SMEs) #TODO add descr SME:
 
