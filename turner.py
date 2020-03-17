@@ -163,12 +163,19 @@ class ShiftLeader:
 shiftLeader = ShiftLeader()
 shiftLeader.shiftLeader = "Unknown"
 
-distro.append(shiftType.__dict__)
-distro.append(shiftLeader.__dict__)
-distro.append({"CSs" : CSs})
-distro.append({"SMEs" : SMEs})
+class Distro:
+	shiftType = {}
+	shiftLeader = {}
+	CSs = {}
+	SMEs = {}
+distro = Distro()
 
-jsonStr = json.dumps(distro)
+distro.shiftType = shiftType.__dict__
+distro.shiftLeader = shiftLeader.__dict__
+distro.CSs = CSs
+distro.SMEs = SMEs
+
+jsonStr = json.dumps(distro.__dict__)
 
 # for test
 print("++++++++++++")
@@ -177,7 +184,7 @@ print("++++++++++++")
 
 # writing to the file
 with open('test.json', 'w') as json_file:
-	json.dump(distro, json_file, indent=4, sort_keys=True)
+	json.dump(distro.__dict__, json_file, indent=4, sort_keys=True)
 	json_file.close()
 
 # for test
