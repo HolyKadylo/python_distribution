@@ -165,8 +165,8 @@ shiftLeader.shiftLeader = "Unknown"
 
 distro.append(shiftType.__dict__)
 distro.append(shiftLeader.__dict__)
-distro.append(CSs) #TODO add descr CSs:
-distro.append(SMEs) #TODO add descr SME:
+distro.append({"CSs" : CSs})
+distro.append({"SMEs" : SMEs})
 
 jsonStr = json.dumps(distro)
 
