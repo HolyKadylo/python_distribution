@@ -178,7 +178,7 @@ distro.SMEs = SMEs
 jsonStr = json.dumps(distro.__dict__)
 
 # writing to the file
-with open('test.json', 'w') as json_file:
+with open('distro.json', 'w') as json_file:
 	json.dump(distro.__dict__, json_file, indent=4, sort_keys=True)
 	json_file.close()
 
