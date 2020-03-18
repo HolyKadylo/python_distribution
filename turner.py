@@ -101,7 +101,7 @@ def constructK (TAG):
 	arr = []
 	colB = khXls['B']
 	for cell in colB:
-		if cell.value == TAG:
+		if str(cell.value) in TAG:
 
 			# converting cell object into cell row number (still string)
 			# <Cell u'Schedule'.
@@ -121,7 +121,7 @@ def constructD (TAG):
 	arr = []
 	colB = dnXls['B']
 	for cell in colB:
-		if cell.value == TAG:
+		if str(cell.value) in TAG:
 
 			# converting cell object into cell row number (still string)
 			# <Cell u'Schedule'.
