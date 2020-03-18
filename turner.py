@@ -168,8 +168,8 @@ class Distro:
 	shiftLeader = {}
 	CSs = {}
 	SMEs = {}
-distro = Distro()
 
+distro = Distro()
 distro.shiftType = shiftType.__dict__
 distro.shiftLeader = shiftLeader.__dict__
 distro.CSs = CSs
@@ -177,23 +177,10 @@ distro.SMEs = SMEs
 
 jsonStr = json.dumps(distro.__dict__)
 
-# for test
-print("++++++++++++")
-print(jsonStr)
-print("++++++++++++")
-
 # writing to the file
 with open('test.json', 'w') as json_file:
 	json.dump(distro.__dict__, json_file, indent=4, sort_keys=True)
 	json_file.close()
-
-# for test
-print ("=experts=")
-print (experts)
-print ("=specialists=")
-print (specialists)
-print ("=sub-spec=")
-print (specialists2)
 
 # removing them from the memory
 del dnXls
